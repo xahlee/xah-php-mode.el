@@ -17,17 +17,12 @@
 
 (defvar xah-php-mode-hook nil "Standard hook for `xah-php-mode'")
 
-(require 'xeu_elisp_util) ; todo: don't require this.
-
 (defun xpm-lookup-php-ref ()
   "Look up current word in PHP's reference doc.
 If a there is a text selection (a phrase), lookup that phrase.
 Launches default browser and opens the doc's url."
   (interactive)
-  (let (inputStr myUrl)
-    (setq inputStr (elt (get-selection-or-unit 'word) 0) )
-    (setq myUrl (concat "http://us.php.net/" inputStr))
-    (browse-url myUrl)))
+  (browse-url (concat "http://us.php.net/" (thing-at-point 'symbol))))
 
 ;; (autoload 'lookup-php-ref "lookup-word-on-internet" "Lookup word in browser" t)
 
