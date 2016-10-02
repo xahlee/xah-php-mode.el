@@ -13,11 +13,12 @@
 
 ;;; HISTORY
 
+;; 2016-10-01 renamed stuff
 ;; version 0.1, 2013-04-18 first version
 
 (defvar xah-php-mode-hook nil "Standard hook for `xah-php-mode'")
 
-(defun xpm-lookup-php-ref ()
+(defun xah-php-mode-lookup-php-ref ()
   "Look up current word in PHP's reference doc.
 If a there is a text selection (a phrase), lookup that phrase.
 Launches default browser and opens the doc's url."
@@ -26,13 +27,12 @@ Launches default browser and opens the doc's url."
 
 ;; (autoload 'lookup-php-ref "lookup-word-on-internet" "Lookup word in browser" t)
 
-
-(defvar xpm-php-kwds nil "a list of PHP lang keywords")
-(setq xpm-php-kwds
+(defvar xah-php-mode-php-kwds nil "a list of PHP lang keywords")
+(setq xah-php-mode-php-kwds
 '( "__halt_compiler" "abstract" "and" "array" "as" "break" "callable" "case" "catch" "class" "clone" "const" "continue" "declare" "default" "die" "do" "echo" "else" "elseif" "empty" "enddeclare" "endfor" "endforeach" "endif" "endswitch" "endwhile" "eval" "exit" "extends" "final" "for" "foreach" "function" "global" "goto" "if" "implements" "include" "include_once" "instanceof" "insteadof" "interface" "isset" "list" "namespace" "new" "or" "print" "private" "protected" "public" "require" "require_once" "return" "static" "switch" "throw" "trait" "try" "unset" "use" "var" "while" "xor" ) )
 
-(defvar xpm-keywords-spam-1 nil "a list of PHP lang keywords")
-(setq xpm-keywords-spam-1
+(defvar xah-php-mode-keywords-spam-1 nil "a list of PHP lang keywords")
+(setq xah-php-mode-keywords-spam-1
 '(
 "AppendIterator.getIteratorIndex()"
 "CairoContent()"
@@ -536,8 +536,8 @@ Launches default browser and opens the doc's url."
 )
  )
 
-(defvar xpm-keywords-spam-2 nil "a list of PHP lang keywords")
-(setq xpm-keywords-spam-2
+(defvar xah-php-mode-keywords-spam-2 nil "a list of PHP lang keywords")
+(setq xah-php-mode-keywords-spam-2
 '(
 "fbsql_clob_size"
 "fbsql_create_db"
@@ -1034,8 +1034,8 @@ Launches default browser and opens the doc's url."
 )
  )
 
-(defvar xpm-keywords-spam-3 nil "a list of PHP lang keywords")
-(setq xpm-keywords-spam-3
+(defvar xah-php-mode-keywords-spam-3 nil "a list of PHP lang keywords")
+(setq xah-php-mode-keywords-spam-3
 '(
 "msg_stat_queue"
 "msgfmt_create"
@@ -1639,8 +1639,8 @@ Launches default browser and opens the doc's url."
 )
  )
 
-(defvar xpm-keywords-spam-4 nil "a list of PHP lang keywords")
-(setq xpm-keywords-spam-4
+(defvar xah-php-mode-keywords-spam-4 nil "a list of PHP lang keywords")
+(setq xah-php-mode-keywords-spam-4
 '(
 
 "spliti"
@@ -2074,21 +2074,21 @@ Launches default browser and opens the doc's url."
 )
  )
 
-(defvar xpm-constant-kwds nil "a list of PHP lang constants")
-(setq xpm-constant-kwds
+(defvar xah-php-mode-constant-kwds nil "a list of PHP lang constants")
+(setq xah-php-mode-constant-kwds
 '("__CLASS__" "__DIR__" "__FILE__" "__FUNCTION__" "__LINE__" "__METHOD__" "__NAMESPACE__" "__TRAIT__") )
 
 
 ;; syntax coloring related
 
-(setq xpm-font-lock-keywords
+(setq xah-php-mode-font-lock-keywords
       (let (
-            (phpWords (regexp-opt xpm-php-kwds 'words))
-            (phpConstants (regexp-opt xpm-constant-kwds 'words))
-            (phpWordSpam1 (regexp-opt xpm-keywords-spam-1 'words))
-            (phpWordSpam2 (regexp-opt xpm-keywords-spam-2 'words))
-            (phpWordSpam3 (regexp-opt xpm-keywords-spam-3 'words))
-            (phpWordSpam4 (regexp-opt xpm-keywords-spam-4 'words))
+            (phpWords (regexp-opt xah-php-mode-php-kwds 'words))
+            (phpConstants (regexp-opt xah-php-mode-constant-kwds 'words))
+            (phpWordSpam1 (regexp-opt xah-php-mode-keywords-spam-1 'words))
+            (phpWordSpam2 (regexp-opt xah-php-mode-keywords-spam-2 'words))
+            (phpWordSpam3 (regexp-opt xah-php-mode-keywords-spam-3 'words))
+            (phpWordSpam4 (regexp-opt xah-php-mode-keywords-spam-4 'words))
             )
         `(
 
@@ -2109,15 +2109,15 @@ Launches default browser and opens the doc's url."
 
 ;; keybinding
 
-(defvar xpm-keymap nil "Keybinding for `xah-php-mode'")
+(defvar xah-php-mode-map nil "Keybinding for `xah-php-mode'")
 (progn
-  (setq xpm-keymap (make-sparse-keymap))
+  (setq xah-php-mode-map (make-sparse-keymap))
 )
 
 
 ;; syntax table
-(defvar xpm-syntax-table nil "Syntax table for `xah-php-mode'.")
-(setq xpm-syntax-table
+(defvar xah-php-mode-syntax-table nil "Syntax table for `xah-php-mode'.")
+(setq xah-php-mode-syntax-table
       (let ((synTable (make-syntax-table)))
         (modify-syntax-entry ?#   "< b" synTable) ; comment
         (modify-syntax-entry ?\n  "> b" synTable)
@@ -2134,11 +2134,12 @@ Launches default browser and opens the doc's url."
 
 PHP keywords are colored. Basically that's it.
 
-\\{xpm-keymap}"
-  (setq font-lock-defaults '((xpm-font-lock-keywords)))
+\\{xah-php-mode-map}"
+  (setq font-lock-defaults '((xah-php-mode-font-lock-keywords)))
 
-  (set-syntax-table xpm-syntax-table)
-  (use-local-map xpm-keymap)
+  ;; (set-syntax-table xah-php-mode-syntax-table)
+
+  ;; (use-local-map xah-php-mode-map)
 
   (setq-local comment-start "# ")
   (setq-local comment-end "")
@@ -2151,9 +2152,10 @@ PHP keywords are colored. Basically that's it.
 
 (provide 'xah-php-mode)
 
-; php source code for testing
-; /home/xah/git/symfony/src/Symfony/Bridge/Doctrine/ContainerAwareEventManager.php
-; /home/xah/Downloads/php-chunked-xhtml/refs.basic.text.html
-; http://wordpress.org/
-
 ; /home/xah/git/ergoemacs/packages/xx-php-keywords.txt
+
+;; Local Variables:
+;; coding: utf-8
+;; End:
+
+;;; xah-php-mode.el ends here
