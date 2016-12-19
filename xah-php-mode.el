@@ -1,9 +1,10 @@
-;;; xah-php-mode.el --- Major mode for editing PHP code. -*- coding: utf-8 -*-
+;;; xah-php-mode.el --- Major mode for editing PHP code. -*- coding: utf-8; lexical-binding: t; -*-
 
-;; Copyright © 2013 by Xah Lee
+;; Copyright © 2013, 2016 by Xah Lee
 
-;; Author: Xah Lee <xah@xahlee.org> ( http://xahlee.org/ )
+;; Author: Xah Lee <xah@xahlee.info> ( http://xahlee.info/ )
 ;; Created: 2013-04-18
+;; Package-Requires: ((emacs "24.1"))
 ;; Keywords: languages, convenience
 
 ;; You can redistribute this program and/or modify it. Please give credit and link. Thanks.
@@ -2153,9 +2154,5 @@ PHP keywords are colored. Basically that's it.
 (provide 'xah-php-mode)
 
 ; /home/xah/git/ergoemacs/packages/xx-php-keywords.txt
-
-;; Local Variables:
-;; coding: utf-8
-;; End:
 
 ;;; xah-php-mode.el ends here
