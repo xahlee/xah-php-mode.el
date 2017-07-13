@@ -2082,6 +2082,8 @@ Launches default browser and opens the doc's url."
 
 ;; syntax coloring related
 
+(defvar xah-php-mode-font-lock-keywords nil "for font lock")
+
 (setq xah-php-mode-font-lock-keywords
       (let (
             (phpWords (regexp-opt xah-php-mode-php-kwds 'words))
