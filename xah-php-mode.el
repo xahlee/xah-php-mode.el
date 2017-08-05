@@ -1,21 +1,36 @@
 ;;; xah-php-mode.el --- Major mode for editing PHP code. -*- coding: utf-8; lexical-binding: t; -*-
 
-;; Copyright © 2013, 2016 by Xah Lee
+;; Copyright © 2013-2017, by Xah Lee
 
-;; Author: Xah Lee <xah@xahlee.info> ( http://xahlee.info/ )
+;; Author: Xah Lee ( http://xahlee.info/ )
+;; Version: 3.2.1
 ;; Created: 2013-04-18
-;; Package-Requires: ((emacs "24.1"))
+;; Package-Requires: ((emacs "24.3"))
 ;; Keywords: languages, convenience
+;; Homepage: https://github.com/xahlee/xah-php-mode.el
 
-;; You can redistribute this program and/or modify it. Please give credit and link. Thanks.
+;; This file is not part of GNU Emacs.
+
+;;; License:
+
+;; You can redistribute this program and/or modify it under the terms of the GNU General Public License version 2.
 
 ;;; Commentary:
-;; Major mode for editing PHP code. Alpha stage.
+;; Major mode for editing PHP code. A very basic one. Just does syntax highlighting.
 
-;;; HISTORY
+;; Call `xah-php-mode' to activate the mode.
+;; Files ending in “.php” will open in `xah-php-mode'.
 
-;; 2016-10-01 renamed stuff
-;; version 0.1, 2013-04-18 first version
+;; equires emacs 24.3 because of using setq-local
+
+;;; INSTALL:
+
+;; manual install.
+
+;; Place the file at ~/.emacs.d/lisp/
+;; Then put the following in ~/.emacs.d/init.el
+;; (add-to-list 'load-path "~/.emacs.d/lisp/")
+;; (autoload 'xah-php-mode "xah-php-mode" "xah php major mode." t)
 
 (defvar xah-php-mode-hook nil "Standard hook for `xah-php-mode'")
 
@@ -130,6 +145,8 @@ Launches default browser and opens the doc's url."
 "array_intersect_assoc"
 "array_intersect_uassoc"
 "array_intersect_ukey"
+"array_key_exists"
+"array_keys"
 "array_pop"
 "array_product"
 "array_push"
@@ -143,6 +160,7 @@ Launches default browser and opens the doc's url."
 "array_udiff_assoc"
 "array_udiff_uassoc"
 "array_uintersect_uassoc"
+"array_values"
 "bbcode_set_arg_parser"
 "bcadd"
 "bcompiler_parse_class"
@@ -2086,12 +2104,12 @@ Launches default browser and opens the doc's url."
 
 (setq xah-php-mode-font-lock-keywords
       (let (
-            (phpWords (regexp-opt xah-php-mode-php-kwds 'words))
-            (phpConstants (regexp-opt xah-php-mode-constant-kwds 'words))
-            (phpWordSpam1 (regexp-opt xah-php-mode-keywords-spam-1 'words))
-            (phpWordSpam2 (regexp-opt xah-php-mode-keywords-spam-2 'words))
-            (phpWordSpam3 (regexp-opt xah-php-mode-keywords-spam-3 'words))
-            (phpWordSpam4 (regexp-opt xah-php-mode-keywords-spam-4 'words))
+            (phpWords (regexp-opt xah-php-mode-php-kwds 'symbols))
+            (phpConstants (regexp-opt xah-php-mode-constant-kwds 'symbols))
+            (phpWordSpam1 (regexp-opt xah-php-mode-keywords-spam-1 'symbols))
+            (phpWordSpam2 (regexp-opt xah-php-mode-keywords-spam-2 'symbols))
+            (phpWordSpam3 (regexp-opt xah-php-mode-keywords-spam-3 'symbols))
+            (phpWordSpam4 (regexp-opt xah-php-mode-keywords-spam-4 'symbols))
             )
         `(
 
@@ -2122,6 +2140,7 @@ Launches default browser and opens the doc's url."
 (defvar xah-php-mode-syntax-table nil "Syntax table for `xah-php-mode'.")
 (setq xah-php-mode-syntax-table
       (let ((synTable (make-syntax-table)))
+        (modify-syntax-entry ?_ "_" synTable)
         (modify-syntax-entry ?#   "< b" synTable) ; comment
         (modify-syntax-entry ?\n  "> b" synTable)
         (modify-syntax-entry ?\/ ". 12b4" synTable) ; // and /* */
@@ -2132,7 +2151,7 @@ Launches default browser and opens the doc's url."
 
 ;; define the mode
 (define-derived-mode xah-php-mode fundamental-mode
-  "ξPHP "
+  "∑PHP "
   "A major mode for PHP.
 
 PHP keywords are colored. Basically that's it.
@@ -2152,6 +2171,8 @@ PHP keywords are colored. Basically that's it.
 
   (run-mode-hooks 'xah-php-mode-hook)
 )
+
+(add-to-list 'auto-mode-alist '("\\.php\\'" . xah-php-mode))
 
 (provide 'xah-php-mode)
 

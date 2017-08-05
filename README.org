@@ -1,0 +1,4 @@
+A emacs major mode for editing php code.
+
+This is a very basic mode. It does syntax coloring, of all builtin php keywords.
+
