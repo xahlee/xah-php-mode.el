@@ -3,7 +3,7 @@
 ;; Copyright © 2013-2017, by Xah Lee
 
 ;; Author: Xah Lee ( http://xahlee.info/ )
-;; Version: 3.2.1
+;; Version: 3.2.20170820
 ;; Created: 2013-04-18
 ;; Package-Requires: ((emacs "24.3"))
 ;; Keywords: languages, convenience
@@ -13,7 +13,7 @@
 
 ;;; License:
 
-;; You can redistribute this program and/or modify it under the terms of the GNU General Public License version 2.
+;; You can redistribute this program and/or modify it under the terms of the GNU General Public License version 3.
 
 ;;; Commentary:
 ;; Major mode for editing PHP code. A very basic one. Just does syntax highlighting.
@@ -47,8 +47,8 @@ Launches default browser and opens the doc's url."
 (setq xah-php-mode-php-kwds
 '( "__halt_compiler" "abstract" "and" "array" "as" "break" "callable" "case" "catch" "class" "clone" "const" "continue" "declare" "default" "die" "do" "echo" "else" "elseif" "empty" "enddeclare" "endfor" "endforeach" "endif" "endswitch" "endwhile" "eval" "exit" "extends" "final" "for" "foreach" "function" "global" "goto" "if" "implements" "include" "include_once" "instanceof" "insteadof" "interface" "isset" "list" "namespace" "new" "or" "print" "private" "protected" "public" "require" "require_once" "return" "static" "switch" "throw" "trait" "try" "unset" "use" "var" "while" "xor" ) )
 
-(defvar xah-php-mode-keywords-spam-1 nil "a list of PHP lang keywords")
-(setq xah-php-mode-keywords-spam-1
+(defvar xah-php-mode-keywords-1 nil "a list of PHP lang keywords")
+(setq xah-php-mode-keywords-1
 '(
 "AppendIterator.getIteratorIndex()"
 "CairoContent()"
@@ -555,8 +555,8 @@ Launches default browser and opens the doc's url."
 )
  )
 
-(defvar xah-php-mode-keywords-spam-2 nil "a list of PHP lang keywords")
-(setq xah-php-mode-keywords-spam-2
+(defvar xah-php-mode-keywords-2 nil "a list of PHP lang keywords")
+(setq xah-php-mode-keywords-2
 '(
 "fbsql_clob_size"
 "fbsql_create_db"
@@ -1053,8 +1053,8 @@ Launches default browser and opens the doc's url."
 )
  )
 
-(defvar xah-php-mode-keywords-spam-3 nil "a list of PHP lang keywords")
-(setq xah-php-mode-keywords-spam-3
+(defvar xah-php-mode-keywords-3 nil "a list of PHP lang keywords")
+(setq xah-php-mode-keywords-3
 '(
 "msg_stat_queue"
 "msgfmt_create"
@@ -1658,8 +1658,8 @@ Launches default browser and opens the doc's url."
 )
  )
 
-(defvar xah-php-mode-keywords-spam-4 nil "a list of PHP lang keywords")
-(setq xah-php-mode-keywords-spam-4
+(defvar xah-php-mode-keywords-4 nil "a list of PHP lang keywords")
+(setq xah-php-mode-keywords-4
 '(
 
 "spliti"
@@ -2106,10 +2106,10 @@ Launches default browser and opens the doc's url."
       (let (
             (phpWords (regexp-opt xah-php-mode-php-kwds 'symbols))
             (phpConstants (regexp-opt xah-php-mode-constant-kwds 'symbols))
-            (phpWordSpam1 (regexp-opt xah-php-mode-keywords-spam-1 'symbols))
-            (phpWordSpam2 (regexp-opt xah-php-mode-keywords-spam-2 'symbols))
-            (phpWordSpam3 (regexp-opt xah-php-mode-keywords-spam-3 'symbols))
-            (phpWordSpam4 (regexp-opt xah-php-mode-keywords-spam-4 'symbols))
+            (phpWordSpam1 (regexp-opt xah-php-mode-keywords-1 'symbols))
+            (phpWordSpam2 (regexp-opt xah-php-mode-keywords-2 'symbols))
+            (phpWordSpam3 (regexp-opt xah-php-mode-keywords-3 'symbols))
+            (phpWordSpam4 (regexp-opt xah-php-mode-keywords-4 'symbols))
             )
         `(
 
