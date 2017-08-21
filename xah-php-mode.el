@@ -7,13 +7,10 @@
 ;; Created: 2013-04-18
 ;; Package-Requires: ((emacs "24.3"))
 ;; Keywords: languages, convenience
+;; License: GPL v3
 ;; Homepage: https://github.com/xahlee/xah-php-mode.el
 
 ;; This file is not part of GNU Emacs.
-
-;;; License:
-
-;; You can redistribute this program and/or modify it under the terms of the GNU General Public License version 3.
 
 ;;; Commentary:
 ;; Major mode for editing PHP code. A very basic one. Just does syntax highlighting.
