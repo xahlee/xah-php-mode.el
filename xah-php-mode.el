@@ -1,9 +1,9 @@
 ;;; xah-php-mode.el --- Major mode for editing PHP code. -*- coding: utf-8; lexical-binding: t; -*-
 
-;; Copyright © 2013-2017, by Xah Lee
+;; Copyright © 2013-2020, by Xah Lee
 
 ;; Author: Xah Lee ( http://xahlee.info/ )
-;; Version: 3.2.20170820
+;; Version: 3.2.20200309180033
 ;; Created: 2013-04-18
 ;; Package-Requires: ((emacs "24.3"))
 ;; Keywords: languages, convenience
@@ -47,6 +47,7 @@ Launches default browser and opens the doc's url."
 (defvar xah-php-mode-keywords-1 nil "a list of PHP lang keywords")
 (setq xah-php-mode-keywords-1
 '(
+
 "AppendIterator.getIteratorIndex()"
 "CairoContent()"
 "Context.fill()"
@@ -108,6 +109,7 @@ Launches default browser and opens the doc's url."
 "__unset"
 "__wakeup"
 "_secret_super_dicing()"
+
 "addTaskBackground()"
 "aggregate"
 "aggregate_methods"
@@ -144,6 +146,7 @@ Launches default browser and opens the doc's url."
 "array_intersect_ukey"
 "array_key_exists"
 "array_keys"
+"array_map"
 "array_pop"
 "array_product"
 "array_push"
@@ -359,6 +362,7 @@ Launches default browser and opens the doc's url."
 "com_invoke"
 "com_print_typeinfo"
 "connection_timeout"
+"count"
 "counter_bump"
 "counter_bump_value"
 "counter_get"
@@ -549,6 +553,7 @@ Launches default browser and opens the doc's url."
 "exit"
 "expect_expectl"
 "fam_monitor_directory"
+
 )
  )
 
